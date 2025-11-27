@@ -5,13 +5,13 @@
     --font-size: 16px;
 }
 
-/* Reset default margins and prevent scrolling */
+/* Reset and lock viewport */
 html, body {
     margin: 0;
     padding: 0;
     height: 100%;
     width: 100%;
-    overflow: hidden;           /* disable scrolling */
+    overflow: hidden;             /* disable scrolling */
     background: var(--primary-color);
     font-family: var(--font-family);
     display: flex;
@@ -19,29 +19,27 @@ html, body {
     align-items: center;
 }
 
-/* Main app container (fills the phone screen) */
+/* Full-screen app frame */
 .frame {
-    width: 100%;
-    height: 100%;
-    max-width: 420px;          /* limit for big screens */
-    max-height: 750px;         /* limit for very tall screens */
+    width: 100vw;
+    height: 100vh;
     background: var(--secondary-color);
     position: relative;
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    box-sizing: border-box;
 }
 
-/* Scrollable content area above the navbar */
+/* Scrollable content area above navbar */
 .content {
-    flex: 1;                    /* takes all space above navbar */
+    flex: 1;                       /* fills space above navbar */
     padding: 16px;
     box-sizing: border-box;
-    overflow-y: auto;           /* scroll inside if content is long */
+    overflow-y: auto;              /* scrolls internally if content is long */
 }
 
-/* Bottom navigation bar fixed to bottom of frame */
+/* Bottom navbar fixed to bottom of frame */
 .nav-bar {
     height: 60px;
     width: 90%;
@@ -49,9 +47,10 @@ html, body {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    border-radius: 100px;
+    flex-shrink: 0;
     position: absolute;
-    bottom: 20px;                  /* sticks to bottom */
+    bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
+    border-radius: 100px;
 }
