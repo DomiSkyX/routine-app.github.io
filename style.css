@@ -26,6 +26,9 @@ body {
 
 .nav-bar {
     height: 60px;
+    width: 361px;
+    margin-bottom: 10px;
+    bottom: 0;
     background-color: #373737;
     display: flex;
     align-items: center;
