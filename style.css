@@ -25,12 +25,19 @@ body {
 }
 
 .nav-bar {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+
     height: 60px;
-    width: 361px;
-    margin-bottom: 10px;
-    bottom: 0;
-    background-color: #373737;
+    width: 90%;
+    max-width: 380px;
+
+    background: linear-gradient(to right, #373737 0%, #585858 100%);
+
     display: flex;
     align-items: center;
+    justify-content: space-around;
     border-radius: 100px;
 }
