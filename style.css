@@ -1,3 +1,11 @@
+:root {
+    --primary-color: #4CAF50;
+    --secondary-color: #ff9800;
+    --font-family: 'Arial, sans-serif';
+    --font-size: 16px;
+    --border-radius: 5px;
+}
+
 .frame{
     position: absolute;
     background-color: #fafafa;
