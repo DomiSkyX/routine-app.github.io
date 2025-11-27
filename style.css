@@ -1,28 +1,25 @@
 :root {
     --primary-color: #404040;
     --secondary-color: #fafafa;
-    --font-family: 'Arial, sans-serif';
+    --font-family: Arial, sans-serif;
     --font-size: 16px;
     --border-radius: 5px;
 }
 
 body {
     margin: 0;
-    padding: 0;
-    background-color: var(--primary-color);
-    font-family: var(--font-family);
-    font-size: var(--font-size);
+    background: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
-.frame{
-    position: absolute;
-    background-color: var(--secondary-color);
-    height: 1920px;
-    width: 1080px;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: var(--border-radius);
+.frame {
+    aspect-ratio: 9/16;
+    width: 90vh; /* scale based on height */
+    max-width: 430px; /* stop at big phones */
+    background: var(--secondary-color);
+    
+    box-shadow: 0 8px 24px rgba(0,0,0,.2);
 }
-
