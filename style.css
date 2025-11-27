@@ -20,6 +20,14 @@ body {
     width: 90vh; /* scale based on height */
     max-width: 430px; /* stop at big phones */
     background: var(--secondary-color);
-    
+
     box-shadow: 0 8px 24px rgba(0,0,0,.2);
+}
+
+.nav-bar {
+    height: 60px;
+    background-color: #373737;
+    display: flex;
+    align-items: center;
+    border-radius: 100px;
 }
