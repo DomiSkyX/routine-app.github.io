@@ -1,6 +1,6 @@
 :root {
     --primary-color: #404040;
-    --secondary-color: #ff9800;
+    --secondary-color: #fafafa;
     --font-family: 'Arial, sans-serif';
     --font-size: 16px;
     --border-radius: 5px;
@@ -16,8 +16,7 @@ body {
 
 .frame{
     position: absolute;
-    background-color: #fafafa;
-    color: black;
+    background-color: var(--secondary-color);
     height: 1920px;
     width: 1080px;
     left: 50%;
