@@ -1,0 +1,11 @@
+.frame{
+    position: absolute;
+    background-color: #fafafa;
+    color: black;
+    height: 1920px;
+    width: 1080px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%)
+
+}
