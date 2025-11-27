@@ -2,28 +2,38 @@
     --primary-color: #404040;
     --secondary-color: #fafafa;
     --font-family: Arial, sans-serif;
+    --font-size: 16px;
+    --border-radius: 24px;
 }
 
 html, body {
     margin: 0;
     padding: 0;
-    height: 100vh;
-    width: 100vw;
-    overflow: hidden; /* disable scroll */
+    height: 100%;
+    width: 100%;
+    overflow: hidden;           /* prevent scroll */
     background: var(--primary-color);
     font-family: var(--font-family);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .frame {
-    height: 100vh;
-    width: 100vw;
+    height: 100vh;              /* fill full screen height */
+    aspect-ratio: 9 / 16;       /* portrait ratio */
+    width: 100%;                /* responsive width */
+    max-width: 430px;           /* limit width on big devices */
     background: var(--secondary-color);
     position: relative;
+    border-radius: var(--border-radius);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    overflow: hidden;           /* prevent inner overflow */
 }
 
 .nav-bar {
     position: absolute;
-    bottom: 50px;
+    bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
     height: 60px;
@@ -31,4 +41,15 @@ html, body {
     max-width: 380px;
     border-radius: 100px;
     background: linear-gradient(to right, #373737, #585858);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+/* optional: content area inside frame */
+.content {
+    padding: 20px;
+    box-sizing: border-box;
+    height: calc(100% - 100px); /* leave space for nav-bar */
+    overflow-y: auto;           /* scroll only inside content if needed */
 }
