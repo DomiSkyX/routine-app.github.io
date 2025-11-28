@@ -226,8 +226,7 @@ html, body {
 }
 
 .login-form label {
-    align-self: flex-start;
-    margin-left: 50px;
+    align-self: center;
 }
 
 h1{
@@ -251,4 +250,5 @@ h1{
     margin-bottom: 20px;
     text-align: center;
     align-content: center;
+    text-decoration: none;
 }
