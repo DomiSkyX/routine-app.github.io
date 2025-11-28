@@ -2,11 +2,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <title>Routine App</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="frame">
+        <!-- Header Bar -->
+        <div class="header-bar">
+            <div class="profile">
+                <img class="profile-pic" src="" alt="">
+                <span>User Name</span>
+            </div>
+
+            <div class="notifications-btn">
+                <img src="" alt="">
+            </div>
+        </div>
+
+        <h1 class="track-your-day">Track your Day</h1>
+
+        <!-- Days Section -->
+        <div class="days-grid">
+            <div class="day-card"><span>1</span><h5>Mon</h5></div>
+            <div class="day-card"><span>2</span><h5>Tue</h5></div>
+            <div class="day-card"><span>3</span><h5>Wed</h5></div>
+            <div class="day-card"><span>4</span><h5>Thu</h5></div>
+            <div class="day-card"><span>5</span><h5>Fri</h5></div>
+            <div class="day-card"><span>6</span><h5>Sat</h5></div>
+            <div class="day-card"><span>7</span><h5>Sun</h5></div>
+        </div>
+
+        <!-- Plans/Tasks Switcher -->
+        <div class="plans-tasks-switcher">
+            <button>Plans</button>
+            <button>Tasks</button>
+        </div>
+
+        <!-- Plans/Tasks Section -->
+        <div class="plans-section">
+            <a href="/style.css" class="plan-card">
+                <div onclick="window.open('/style.css')" class="plan-details">
+                    <h3 class="plan-title">Getting Up</h3>
+                    <span>---------------------------------------------------</span>
+                    <div class="plan-time">06:30 AM - 07:20 AM</div>
+                </div>
+            </a>
+            <!-- Add more plan-cards here if needed -->
+        </div>
+
+        <!-- Navigation Bar (outside of scrollable content) -->
         <nav class="nav-bar">
             <a href="/index.html">
                 <img src="" alt="">

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
 :root {
     --primary-color: #404040;
     --secondary-color: #fafafa;
@@ -53,4 +55,151 @@ html, body {
     left: 50%;
     transform: translateX(-50%);
     border-radius: 100px;
+}
+
+
+/* Header wrapper (empfohlen) */
+.header-bar {
+    display: flex;
+    align-items: center;        /* vertikal zentriert */
+    justify-content: space-between;
+    padding: 12px 16px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+/* Profil-Container */
+.profile {
+    display: flex;
+    align-items: center;        /* zentriert Bild + Text */
+    gap: 10px;
+    margin-left: 10px;
+    margin-top: 20px;
+    /* KEINE fixe height setzen - sonst kann das Bild nicht zentriert werden */
+    /* height: 40px;  <-- remove this */
+}
+
+/* Profilbild */
+.profile-pic {
+    background-color: #c7c7c7;  /* Platzhalter-Hintergrundfarbe */
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;             /* verhindert zusätzliche inline-Abstände */
+}
+
+/* Username / Text */
+.profile span {
+  font-size: 17px;
+  font-weight: 500;
+  margin: 0;                  /* nix oben/unten, Flexbox erledigt die Zentrierung */
+  line-height: 1;             /* sorgt dafür, dass die Textbox die richtige Höhe hat */
+}
+
+.track-your-day{
+    color: black;
+    font-weight: medium;
+    font-size: 40px;
+    margin-left: 20px;
+}
+
+.days-grid {
+    margin-left: 20px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    overflow-x: auto;
+    scrollbar-width: none;      /* Firefox */
+}
+
+.days-grid::-webkit-scrollbar {
+    display: none;             /* Chrome, Safari, Edge */
+}
+
+
+.day-card{
+    background: linear-gradient(to bottom, #373737, #585858);
+    height: 136px;
+    width: 75px;
+    border-radius: 20px;
+    border: 2px solid #d7d7d7;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white
+}
+
+.day-card span{
+    font-size: 32px;
+}
+
+.plans-tasks-switcher{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 130px;
+    background-color: rgba(145, 229, 255, 0.33);
+    width: 361px;
+    height: 60px;
+    border: 2px solid #D7D7D7;
+    border-radius: 100px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.plans-tasks-switcher button{
+    background: white;
+    border: none;
+    border-radius: 100px;
+    width: 107px;
+    height: 44px;
+    font-size: 20px;
+    font-weight: medium;
+    color: black;
+    cursor: pointer;
+}
+
+.plan-section{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    overflow-y: auto;
+    height: calc(100vh - 400px); /* adjust based on other content height */
+}
+
+.plan-card{
+    position: relative;
+    margin-top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(to right, #89DAFF, #FFC6C6, #89DAFF);
+    height: 93px;
+    width: 360px;
+    border-radius: 20px;
+    border: 2px solid #d7d7d7;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+}
+
+.plan-card h3{
+    margin: 0;
+}
+
+.plan-card span{
+    margin: 0;
+    font-size: 20px;
+    font-weight: medium;
+    color: rgba(0, 0, 0, 0.2);
 }
