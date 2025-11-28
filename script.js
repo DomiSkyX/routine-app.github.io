@@ -8,17 +8,13 @@
     });
   }
 
-  // --- Prevent caching for this load ---
   window.addEventListener('load', () => {
-    // Only reload if page was loaded from cache
-    if (performance.getEntriesByType("navigation")[0].transferSize === 0) {
-      window.location.reload();
-    }
-
     // --- Days grid logic ---
     const today = new Date();
     const todayDayOfWeek = today.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
-    const todayDate = today.getDate();
+    let currentDate = today.getDate();
+    let currentMonth = today.getMonth(); // 0 = Jan, 11 = Dec
+    let currentYear = today.getFullYear();
 
     const dayCardsContainer = document.querySelector('.days-grid');
     const dayCards = Array.from(dayCardsContainer.children);
@@ -33,10 +29,21 @@
     for (let i = 0; i < dayCards.length; i++) {
       const card = dayCards[(todayIndexInCards + i) % dayCards.length];
 
-      // Calculate the day of the month for each card
-      const offset = i;
-      const cardDate = todayDate + offset;
-      card.querySelector('span').textContent = cardDate;
+      // Get number of days in the current month
+      const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+
+      // Reset day and month if it exceeds the current month
+      if (currentDate > daysInMonth) {
+        currentDate = 1;
+        currentMonth++;
+        if (currentMonth > 11) { // December -> January
+          currentMonth = 0;
+          currentYear++;
+        }
+      }
+
+      // Update day number in <span>
+      card.querySelector('span').textContent = currentDate;
 
       // Update classes
       if (i === 0) {
@@ -47,6 +54,7 @@
         card.classList.add('upcoming-day-card');
       }
 
+      currentDate++; // increment for next card
       orderedCards.push(card);
     }
 
