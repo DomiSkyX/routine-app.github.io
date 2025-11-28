@@ -51,7 +51,7 @@ html, body {
     justify-content: space-around;
     flex-shrink: 0;
     position: absolute;
-    bottom: 20px;
+    bottom: 50px;
     left: 50%;
     transform: translateX(-50%);
     border-radius: 100px;
