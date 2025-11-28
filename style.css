@@ -118,7 +118,7 @@ html, body {
 }
 
 
-.day-card{
+.current-day-card{
     background: linear-gradient(to bottom, #373737, #585858);
     height: 136px;
     width: 75px;
@@ -130,6 +130,20 @@ html, body {
     align-items: center;
     justify-content: center;
     color: white
+}
+
+.upcoming-day-card{
+    background: #fafafa;
+    height: 136px;
+    width: 75px;
+    border-radius: 20px;
+    border: 2px solid #d7d7d7;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: rgb(0, 0, 0)
 }
 
 .day-card span{
