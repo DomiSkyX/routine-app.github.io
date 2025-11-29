@@ -1,12 +1,28 @@
+  // ===============================
+  // FORCE REFRESH AFTER NEW DEPLOY
+  // ===============================
 
-  // --- Clear Service Workers (once) ---
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.getRegistrations().then((registrations) => {
-      for (let registration of registrations) {
-        registration.unregister();
+  // 1. Remove stored cache/info once
+  if (!localStorage.getItem("app_version_checked")) {
+      localStorage.setItem("app_version_checked", "true");
+
+      // delete service workers
+      if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.getRegistrations().then(regs => {
+              regs.forEach(reg => reg.unregister());
+          });
       }
-    });
+
+      // Hard reload → ensures newest GitHub pages version
+      location.reload(true);
   }
+
+  // 2. Remove loading screen when page is ready
+  window.addEventListener("load", () => {
+      const overlay = document.getElementById("loading-overlay");
+      if (overlay) overlay.style.display = "none";
+  });
+
 
   window.addEventListener('load', () => {
     // --- Days grid logic ---
