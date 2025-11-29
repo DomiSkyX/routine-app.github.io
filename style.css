@@ -206,16 +206,6 @@ html, body {
 
 
 
-.input-field {
-    width: 337px;
-    height: 49px;
-    padding: 10px;
-    margin: 8px 0;
-    box-sizing: border-box;
-    border: 2px solid #c7c7c7;
-    border-radius: 20px;
-}
-
 .login-form {
     position: relative;
     top: 40%;
@@ -226,8 +216,32 @@ html, body {
 }
 
 .login-form label {
-    align-self: center;
+    align-self: flex-start;
 }
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    width: 337px;
+    margin-bottom: 14px;
+}
+
+.input-group label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #696969;
+    margin-bottom: 6px;
+}
+
+.input-field {
+    height: 49px;
+    padding: 10px 12px;
+    border: 2px solid #c7c7c7;
+    border-radius: 20px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
 
 h1{
     margin-bottom: 20px;
