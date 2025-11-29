@@ -188,11 +188,6 @@ html, body {
     transform: translateX(-50%);
 }
 
-.plans-tasks-switcher button.active {
-    background-color: #FFFFFF;
-    border: 1px solid #D7D7D7;
-    border-radius: 100px;
-}
 .plans-tasks-switcher button {
     background-color: rgba(255, 255, 255, 0.24);
     border: 1px solid #D7D7D7;
@@ -201,7 +196,24 @@ html, body {
     height: 44px;
     font-weight: 500;
     font-size: 24px;
+    color: black;           /* <-- ensures text is black */
+    cursor: pointer;
+    outline: none;          /* removes default blue focus ring */
+    -webkit-appearance: none; /* removes iOS default styles */
 }
+
+.plans-tasks-switcher button:focus,
+.plans-tasks-switcher button:active {
+    color: black;           /* keep text black on press/focus */
+    outline: none;          /* remove blue highlight */
+}
+
+.plans-tasks-switcher button.active {
+    background-color: #FFFFFF;
+    border: 1px solid #D7D7D7;
+    color: black;           /* ensure active tab text is black */
+}
+
 
 .plan-section{
     margin-top: 20px;
