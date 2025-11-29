@@ -188,9 +188,9 @@ html, body {
     transform: translateX(-50%);
 }
 
-.plans-tasks-switcher button{
-    background: white;
-    border: none;
+.plans-tasks-switcher button.active {
+    background-color: #FFFFFF;
+    border: 1px solid #D7D7D7;
     border-radius: 100px;
     width: 107px;
     height: 44px;
