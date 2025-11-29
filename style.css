@@ -90,6 +90,11 @@ html, body {
     width: 100%;
 }
 
+.notifications-btn img{
+    width: 20px;
+    height: 20px;
+}
+
 /* Profil-Container */
 .profile {
     display: flex;
@@ -117,6 +122,19 @@ html, body {
   font-weight: 500;
   margin: 0;                  /* nix oben/unten, Flexbox erledigt die Zentrierung */
   line-height: 1;             /* sorgt dafür, dass die Textbox die richtige Höhe hat */
+}
+
+.notifications-btn {
+    background-color: #c7c7c7;  /* Platzhalter-Hintergrundfarbe */
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    margin-top: 20px;
+    cursor: pointer;
 }
 
 .track-your-day{
