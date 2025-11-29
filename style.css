@@ -192,12 +192,15 @@ html, body {
     background-color: #FFFFFF;
     border: 1px solid #D7D7D7;
     border-radius: 100px;
+}
+.plans-tasks-switcher button {
+    background-color: rgba(255, 255, 255, 0.24);
+    border: 1px solid #D7D7D7;
+    border-radius: 100px;
     width: 107px;
     height: 44px;
-    font-size: 20px;
-    font-weight: medium;
-    color: black;
-    cursor: pointer;
+    font-weight: 500;
+    font-size: 24px;
 }
 
 .plan-section{

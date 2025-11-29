@@ -1,35 +1,40 @@
-  // ===============================
-  // FORCE REFRESH AFTER NEW DEPLOY
-  // ===============================
+// ===============================
+// 1. FORCE REFRESH AND CLEAR SERVICE WORKERS
+// ===============================
 
-  // 1. Remove stored cache/info once
-  if (!localStorage.getItem("app_version_checked")) {
-      localStorage.setItem("app_version_checked", "true");
+if (!localStorage.getItem("app_version_checked")) {
+    localStorage.setItem("app_version_checked", "true");
 
-      // delete service workers
-      if ('serviceWorker' in navigator) {
-          navigator.serviceWorker.getRegistrations().then(regs => {
-              regs.forEach(reg => reg.unregister());
-          });
-      }
+    // Unregister all service workers
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then(registrations => {
+            registrations.forEach(reg => reg.unregister());
+        });
+    }
 
-      // Hard reload → ensures newest GitHub pages version
-      location.reload(true);
-  }
+    // Hard reload the page to fetch newest version
+    window.location.reload();
+}
 
-  // 2. Remove loading screen when page is ready
-  window.addEventListener("load", () => {
-      const overlay = document.getElementById("loading-overlay");
-      if (overlay) overlay.style.display = "none";
-  });
+// ===============================
+// 2. Remove loading overlay when page is ready
+// ===============================
+window.addEventListener("load", () => {
+    const overlay = document.getElementById("loading-overlay");
+    if (overlay) overlay.style.display = "none";
 
+    initDaysGrid();         // call your days-grid logic after page loads
+    initPlansTasksSwitcher(); // set up Plans/Tasks switcher
+});
 
-  window.addEventListener('load', () => {
-    // --- Days grid logic ---
+// ===============================
+// 3. Days grid logic
+// ===============================
+function initDaysGrid() {
     const today = new Date();
-    const todayDayOfWeek = today.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
+    const todayDayOfWeek = today.getDay(); // 0 = Sunday
     let currentDate = today.getDate();
-    let currentMonth = today.getMonth(); // 0 = Jan, 11 = Dec
+    let currentMonth = today.getMonth();
     let currentYear = today.getFullYear();
 
     const dayCardsContainer = document.querySelector('.days-grid');
@@ -37,44 +42,66 @@
 
     // Map weekday indices to your card order (Mon=0, Sun=6)
     const cardDays = dayCards.map((card, index) => (index + 1) % 7);
-
-    // Reorder so current day is first
     const orderedCards = [];
     const todayIndexInCards = cardDays.indexOf(todayDayOfWeek);
 
     for (let i = 0; i < dayCards.length; i++) {
-      const card = dayCards[(todayIndexInCards + i) % dayCards.length];
+        const card = dayCards[(todayIndexInCards + i) % dayCards.length];
 
-      // Get number of days in the current month
-      const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
-
-      // Reset day and month if it exceeds the current month
-      if (currentDate > daysInMonth) {
-        currentDate = 1;
-        currentMonth++;
-        if (currentMonth > 11) { // December -> January
-          currentMonth = 0;
-          currentYear++;
+        const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+        if (currentDate > daysInMonth) {
+            currentDate = 1;
+            currentMonth++;
+            if (currentMonth > 11) {
+                currentMonth = 0;
+                currentYear++;
+            }
         }
-      }
 
-      // Update day number in <span>
-      card.querySelector('span').textContent = currentDate;
+        card.querySelector('span').textContent = currentDate;
 
-      // Update classes
-      if (i === 0) {
-        card.classList.remove('upcoming-day-card');
-        card.classList.add('current-day-card');
-      } else {
-        card.classList.remove('current-day-card');
-        card.classList.add('upcoming-day-card');
-      }
+        if (i === 0) {
+            card.classList.remove('upcoming-day-card');
+            card.classList.add('current-day-card');
+        } else {
+            card.classList.remove('current-day-card');
+            card.classList.add('upcoming-day-card');
+        }
 
-      currentDate++; // increment for next card
-      orderedCards.push(card);
+        currentDate++;
+        orderedCards.push(card);
     }
 
-    // Clear container and append in new order
     dayCardsContainer.innerHTML = '';
-    orderedCards.forEach((card) => dayCardsContainer.appendChild(card));
-  });
+    orderedCards.forEach(card => dayCardsContainer.appendChild(card));
+}
+
+// ===============================
+// 4. Plans/Tasks switcher logic
+// ===============================
+function initPlansTasksSwitcher() {
+    const plansBtn = document.querySelector('.plans-tasks-switcher button:nth-child(1)');
+    const tasksBtn = document.querySelector('.plans-tasks-switcher button:nth-child(2)');
+
+    const plansSection = document.getElementById('plans-section');
+    const tasksSection = document.getElementById('tasks-section');
+
+    // Default: show Plans
+    plansSection.style.display = 'flex';
+    tasksSection.style.display = 'none';
+    plansBtn.classList.add('active');
+
+    plansBtn.addEventListener('click', () => {
+        plansSection.style.display = 'flex';
+        tasksSection.style.display = 'none';
+        plansBtn.classList.add('active');
+        tasksBtn.classList.remove('active');
+    });
+
+    tasksBtn.addEventListener('click', () => {
+        plansSection.style.display = 'none';
+        tasksSection.style.display = 'flex';
+        tasksBtn.classList.add('active');
+        plansBtn.classList.remove('active');
+    });
+}
