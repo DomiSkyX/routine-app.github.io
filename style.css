@@ -248,7 +248,7 @@ html, body {
     margin-top: 10px;
     left: 50%;
     transform: translateX(-50%);
-    background: linear-gradient(to right, #89DAFF, #FFC6C6, #89DAFF);
+    background: #FAFAFA;
     height: 93px;
     width: 360px;
     border-radius: 20px;
@@ -273,6 +273,41 @@ html, body {
     color: rgba(0, 0, 0, 0.2);
 }
 
+.task-checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 18px;
+}
+
+/* hide real checkbox */
+.task-checkbox input {
+    display: none;
+}
+
+/* custom box */
+.task-checkbox label {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #000;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* when checked → show filled box */
+.task-checkbox input:checked + label::after {
+    content: "✔";
+    color: white;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.task-checkbox input:checked + label {
+    background: #0099FF;
+    border-color: #0099FF;
+}
 
 
 .login-form {
